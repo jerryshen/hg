@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title hg
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    = csrf_meta_tags
+    = favicon_link_tag '/favicon.png', type: 'image/png'
+
+  body
+    = render 'header'
+    = render 'chatroom' if @main_nav
+
+    = yield
+
+    = render 'foot'
+
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    = yield :js

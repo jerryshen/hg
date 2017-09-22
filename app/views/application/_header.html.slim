@@ -1,0 +1,25 @@
+.h60
+  .header-wrap
+    .main.cf
+      a.logo.fl href=""
+        img data-src="holder.js/113x32" alt=""/
+      ul.head-nav.fl
+        = main_nav :home do
+          = link_to '足球比分', root_path
+        = main_nav :basketball do
+          = link_to '篮球比分', basketball_path
+        = main_nav :baseball do
+          = link_to '棒球比分', baseball_path
+        = main_nav :soccer do
+          = link_to '美式足球比分', soccer_path
+        li
+          a href="" 收藏本站
+        li
+          a target='_blank' href='https://static.meiqia.com/dist/standalone.html?_=t&eid=74298' 联系我们
+      .login-wrap.fr
+        - if user_signed_in?
+          = link_to '退出登录', destroy_user_session_path, class: 'btn btn-white', method: :delete
+        - else
+          i.iconfont.red &#xe652;
+          a.btn.btn-white.js-login-link.ajax-popup data-type='ajax' href='javascript:void(0);' data-src=new_user_session_path 登录
+          a.btn.btn-red href=new_user_registration_path 注册

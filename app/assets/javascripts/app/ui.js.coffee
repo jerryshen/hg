@@ -1,0 +1,2 @@
+$ ->
+  $('.ajax-popup').fancybox ->

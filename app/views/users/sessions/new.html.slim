@@ -1,0 +1,23 @@
+.login-box
+  .login-box-head
+    .title 登录
+    .error-msg.g-hide 手机号或者密码错误
+  = simple_form_for resource, as: resource_name, url: session_path(resource_name), remote: true do |f|
+    .form-group
+      = f.input_field :login, class: 'form-control', placeholder: '手机号码'
+    .form-group
+      = f.input_field :password, class: 'form-control', placeholder: '登录密码（6-30位）'
+    .form-group.tr.f12
+      a.gray9 href="" 找回密码
+    .form-group
+      = f.button :submit, '登录', class: 'btn-red btn-block'
+    .form-group.f12
+      a.fr.red href=new_user_registration_path 新用户注册
+      label.gray8 for=""
+        input type="checkbox" name=""/
+        | 一个月内免登陆
+
+coffee:
+  $('form#new_user').on 'ajax:error', (xhr, status, error) ->
+    $('.error-msg').show()
+    console.log event

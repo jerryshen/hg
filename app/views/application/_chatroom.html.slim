@@ -1,0 +1,42 @@
+.main.cf.pt20.pb20.m-room#room
+  .fl.w800
+    #leisu-free.leisu-free
+  .fr.w270
+    .discussion
+      .m-status#linkStatus.hide 连接中。。。
+      .announcement_title 直播公告
+      .announcement#roomAnnouncement
+      ul.tab.cf
+        li.crt.j-tab.fl data-value="chat" 直播互动
+        li.g-hide.j-tab.fr data-value="member"
+          | 在线成员
+          span#roomOnlineMemberNum
+      .chat.j-pannel.j-chat#output
+      .member.j-pannel.hide
+        .list.j-member
+        .more.j-more
+          a 加载更多
+      .edit
+        form#monitor
+          p
+            input#input placeholder="Your message" type="text"
+            input type="submit" value="Broadcast"
+          ul#output
+
+        / textarea.editText#editText placeholder="Ctrl+Enter快速发送"
+      .sendBtn.cf
+        #emojiTag
+        a#sentText.u-btn.btn 发送
+        a#customBtn.btn.custom
+        a#emoji.btn.emoji
+
+    #menu.m-menu.hide
+      ul
+        li.j-item.j-kick data-type="0"  title="移除直播室" 踢人
+        li.j-item.j-gag data-type="1" title="禁止发言" 禁言
+        li.j-item.j-black data-type="2"  title="永久不能进入该直播间" 拉黑该用户
+        li.j-item.admin.j-admin data-type="3" 任命管理员
+
+- content_for :js do
+  coffee:
+    $('#monitor')[0].onsubmit = send_text

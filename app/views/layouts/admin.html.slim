@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title HG
+
+    meta content='width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0' name='viewport'
+    meta content='telephone=no' name='format-detection'
+
+    = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+    
+    = csrf_meta_tags
+    = favicon_link_tag '/favicon.png', type: 'image/png'
+
+  body
+    - if admin_user_signed_in?
+      = render '/admin/shared/header'
+      = render '/admin/shared/message'
+
+    = yield
+
+    = yield :js

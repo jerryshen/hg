@@ -1,0 +1,20 @@
+= simple_nested_form_for @admin_user, url: url, html: { class: 'horizontal_form' } do |f|
+  .normal-tools.clearfix
+    .fr.action
+      = f.button :submit, '保存', class: 'btn-primary'
+      a.btn.btn-secondary href=''  取消
+    .fl.s-title= @admin_user.new_record? ? '添加管理员' : '编辑管理员'
+  .container
+    fieldset
+      legend 基本信息
+
+      .clearfix.normal-form
+        = f.input :name
+        = f.input :email
+        = f.input :password
+        = f.input :password_confirmation
+  .mt20
+  .normal-tools.clearfix
+    .fr.action
+      = f.button :submit, '保存', class: 'btn-primary'
+      a.btn.btn-secondary href=""  取消

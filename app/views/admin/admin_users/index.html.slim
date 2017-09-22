@@ -1,0 +1,52 @@
+.normal-tools.clearfix
+  .fr.action= link_to '添加管理员', new_admin_admin_user_path, class: 'btn btn-secondary'
+  .fl.s-title
+    = t("views.admin.#{@main_nav}")
+    = '-'
+    = t("views.admin.#{@sec_nav}")
+
+.main
+  .w20.fl
+    .side-bar
+      .default-title 搜索
+      = search_form_for @q, builder: SimpleForm::FormBuilder, url: admin_admin_users_path, html: { class: 'form-horizontal stockins-search mt20' } do |f|
+        = f.input :name_cont, wrapper: :side_search, placeholder: '搜名字'
+        = f.input :email_cont, wrapper: :side_search, placeholder: '搜邮箱'
+        = f.button :submit, '搜一搜', class: 'btn-primary'
+        = link_to '重置搜索', admin_categories_path, class: 'btn btn-secondary ml10'
+
+
+  .w80.fl
+    table.table.table-hover.bbe
+      tr
+        th= AdminUser.human_attribute_name(:id)
+        th= AdminUser.human_attribute_name(:name)
+        th= AdminUser.human_attribute_name(:email)
+        th= AdminUser.human_attribute_name(:sign_in_count)
+        th= AdminUser.human_attribute_name(:last_sign_in_at)
+        th= AdminUser.human_attribute_name(:last_sign_in_ip)
+        th= AdminUser.human_attribute_name(:created_at)
+        th
+      tr
+        td.h2 colspan='3'
+      - @admin_users.each do |resource|
+        tr
+          td= resource.id
+          td= resource.name
+          td= resource.email
+          td= resource.sign_in_count
+          td
+            - if resource.last_sign_in_at.present?
+              = l resource.last_sign_in_at, format: :long
+
+          td= resource.last_sign_in_ip
+          td= l resource.created_at, format: :long
+          td
+            .fl.btn-group.tools-group
+              a.btn.btn-sm.btn-secondary.dropdown-toggle href="" data-toggle="dropdown" ...
+              .dropdown-menu
+                ul.menu-list
+                  li= link_to '编辑', edit_admin_admin_user_path(resource)
+                  li= link_to '删除', admin_admin_user_path(resource), method: :delete, data: { confirm: Settings.notices.delete_confirm }
+
+    .table-total 共计: #{ @admin_users.count }个

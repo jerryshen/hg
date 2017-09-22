@@ -12,7 +12,7 @@ gem 'rails', '~> 5.1.3'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+# gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -29,7 +29,7 @@ gem 'rest-client'
 gem 'netease_im'
 gem 'friendly_id'
 gem 'simple_form'
-gem 'unicorn'
+# gem 'unicorn'
 gem 'rucaptcha'
 gem 'china_sms'
 gem 'plezi'
@@ -69,7 +69,7 @@ group :development do
 
   gem 'annotate'
   gem 'foreman'
-  gem 'thin'
+  # gem 'thin'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
